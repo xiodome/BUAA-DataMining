@@ -1,0 +1,410 @@
+{
+    "hazelnut/test/001.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/002.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/003.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/004.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/005.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/006.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/007.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/008.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/009.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/010.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/011.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/012.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/013.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/014.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/015.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/016.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/017.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/018.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/019.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/020.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/021.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/022.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/023.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/024.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/025.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/026.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/027.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/028.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/029.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/030.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/031.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/032.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/033.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/034.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/035.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/036.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/037.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/038.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/039.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/040.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/041.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/042.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/043.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/044.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/045.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/046.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/047.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/048.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/049.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/050.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/051.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/052.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/053.png": {
+        "original_category": "hazelnut",
+        "label": "bad"
+    },
+    "hazelnut/test/054.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "hazelnut/test/055.png": {
+        "original_category": "hazelnut",
+        "label": "good"
+    },
+    "zipper/test/001.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/002.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/003.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/004.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/005.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/006.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/007.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/008.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/009.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/010.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/011.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/012.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/013.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/014.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/015.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/016.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/017.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/018.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/019.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/020.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/021.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/022.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/023.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/024.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/025.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/026.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/027.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/028.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/029.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/030.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/031.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/032.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/033.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/034.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/035.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/036.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/037.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/038.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/039.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/040.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/041.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/042.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/043.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/044.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/045.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    },
+    "zipper/test/046.png": {
+        "original_category": "zipper",
+        "label": "good"
+    },
+    "zipper/test/047.png": {
+        "original_category": "zipper",
+        "label": "bad"
+    }
+}
