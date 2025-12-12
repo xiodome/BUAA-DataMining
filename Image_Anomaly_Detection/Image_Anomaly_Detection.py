@@ -300,38 +300,52 @@ class Evaluator:
         output = Path(output_dir)
         output.mkdir(parents=True, exist_ok=True)
         for category, data in self.history.items():
-            scores = np.asarray(data["scores"])
-            y_true = np.asarray(data["y_true"])
-            y_pred = np.asarray(data["y_pred"])
-            threshold = float(data["best_threshold"])
+            scores = np.asarray(data.get("scores", []))
+            y_true = np.asarray(data.get("y_true", []))
+            y_pred = np.asarray(data.get("y_pred", []))
+            threshold = float(data.get("best_threshold", np.nan))
+            metrics = data.get("metrics", {})
 
-            plt.figure(figsize=(6, 5))
-            plt.plot(data["fpr"], data["tpr"], label=f"AUC = {data['metrics']['roc_auc']:.4f}", linewidth=2)
-            plt.plot([0, 1], [0, 1], "k--", label="Random")
-            plt.xlabel("False Positive Rate")
-            plt.ylabel("True Positive Rate")
-            plt.title(f"ROC Curve - {category}")
-            plt.legend()
-            plt.grid(True, alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(output / f"{category}_roc.png", dpi=300)
-            plt.close()
+            has_labels = y_true.size and np.all(np.isin(y_true, [0, 1]))
+            has_roc_pr = ("fpr" in data and "tpr" in data and
+                          "precision_curve" in data and "recall_curve" in data and
+                          isinstance(metrics, dict) and "roc_auc" in metrics and "pr_auc" in metrics)
 
-            plt.figure(figsize=(6, 5))
-            plt.plot(data["recall_curve"], data["precision_curve"], label=f"AP = {data['metrics']['pr_auc']:.4f}", linewidth=2)
-            plt.xlabel("Recall")
-            plt.ylabel("Precision")
-            plt.title(f"Precision-Recall Curve - {category}")
-            plt.legend()
-            plt.grid(True, alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(output / f"{category}_pr.png", dpi=300)
-            plt.close()
+            # 1) ROC 曲线（仅当有标签与曲线数据时）
+            if has_roc_pr:
+                plt.figure(figsize=(6, 5))
+                plt.plot(data["fpr"], data["tpr"], label=f"AUC = {metrics['roc_auc']:.4f}", linewidth=2)
+                plt.plot([0, 1], [0, 1], "k--", label="Random")
+                plt.xlabel("False Positive Rate")
+                plt.ylabel("True Positive Rate")
+                plt.title(f"ROC Curve - {category}")
+                plt.legend()
+                plt.grid(True, alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(output / f"{category}_roc.png", dpi=300)
+                plt.close()
 
+                plt.figure(figsize=(6, 5))
+                plt.plot(data["recall_curve"], data["precision_curve"], label=f"AP = {metrics['pr_auc']:.4f}", linewidth=2)
+                plt.xlabel("Recall")
+                plt.ylabel("Precision")
+                plt.title(f"Precision-Recall Curve - {category}")
+                plt.legend()
+                plt.grid(True, alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(output / f"{category}_pr.png", dpi=300)
+                plt.close()
+
+            # 2) 分数直方图
             plt.figure(figsize=(6, 5))
-            sns.histplot(scores[y_true == 0], bins=40, color="steelblue", alpha=0.6, label="Normal")
-            sns.histplot(scores[y_true == 1], bins=40, color="indianred", alpha=0.6, label="Anomaly")
-            plt.axvline(threshold, color="black", linestyle="--", label="Threshold")
+            if has_labels:
+                sns.histplot(scores[y_true == 0], bins=40, color="steelblue", alpha=0.6, label="Normal")
+                sns.histplot(scores[y_true == 1], bins=40, color="indianred", alpha=0.6, label="Anomaly")
+            else:
+                # 无标签：画整体分布
+                sns.histplot(scores, bins=40, color="steelblue", alpha=0.7, label="All (Unlabeled)")
+            if not np.isnan(threshold):
+                plt.axvline(threshold, color="black", linestyle="--", label="Threshold")
             plt.xlabel("Anomaly Score")
             plt.ylabel("Frequency")
             plt.title(f"Score Distribution - {category}")
@@ -340,15 +354,17 @@ class Evaluator:
             plt.savefig(output / f"{category}_score_distribution.png", dpi=300)
             plt.close()
 
-            cm = confusion_matrix(y_true, y_pred)
-            plt.figure(figsize=(6, 5))
-            sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False)
-            plt.xlabel("Predicted")
-            plt.ylabel("Actual")
-            plt.title(f"Confusion Matrix - {category}")
-            plt.tight_layout()
-            plt.savefig(output / f"{category}_confusion.png", dpi=300)
-            plt.close()
+            # 3) 混淆矩阵（仅在有标签时）
+            if has_labels and y_pred.size:
+                cm = confusion_matrix(y_true, y_pred)
+                plt.figure(figsize=(6, 5))
+                sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False)
+                plt.xlabel("Predicted")
+                plt.ylabel("Actual")
+                plt.title(f"Confusion Matrix - {category}")
+                plt.tight_layout()
+                plt.savefig(output / f"{category}_confusion.png", dpi=300)
+                plt.close()
 
 
 def plot_feature_space(category: str, train_vectors: Optional[np.ndarray], test_vectors: Optional[np.ndarray],
@@ -574,7 +590,8 @@ def run_patchcore_for_category(category: str, data_root: Union[str, Path], trans
         train_df.to_csv(results_dir / f"{category}_train_predictions.csv", index=False)
         print(f"训练集缺少标签，基于 90 分位数阈值得到预测: {results_dir / (category + '_train_predictions.csv')}")
     else:
-        train_metrics = evaluator.evaluate(f"{category} (Train)", train_labels, train_scores, store_history=False)
+        # 改动：训练也允许写入 history（便于统一可视化），保持原逻辑可设为 True
+        train_metrics = evaluator.evaluate(f"{category} (Train)", train_labels, train_scores, store_history=True)
         train_threshold = train_metrics["best_threshold"]
         train_pred = (train_scores >= train_threshold).astype(int)
         train_df = pd.DataFrame({
@@ -606,6 +623,7 @@ def run_patchcore_for_category(category: str, data_root: Union[str, Path], trans
     )
 
     if label_array_for_viz is None:
+        # 无标签测试：使用分位数阈值，并将“仅用于可视化”的条目写入 evaluator.history
         threshold = float(np.percentile(test_scores, 90))
         predicted = (test_scores >= threshold).astype(int)
         results_df = pd.DataFrame({
@@ -616,8 +634,20 @@ def run_patchcore_for_category(category: str, data_root: Union[str, Path], trans
         results_df.to_csv(results_dir / f"{category}_predictions.csv", index=False)
         print(f"测试集缺少标签，基于 90 分位数阈值保存预测: {results_dir / (category + '_predictions.csv')}")
         plot_feature_space(category, patchcore.train_vectors, test_vectors, predicted, results_dir)
+
+        # 注入可视化用的 history 条目（无监督：仅分数直方图）
+        evaluator.history[category] = {
+            "scores": test_scores,
+            # 无标签，用全 -1 标记；plot_curves 会自动降级仅画分数图
+            "y_true": np.full_like(predicted, -1),
+            "y_pred": predicted,
+            "best_threshold": threshold,
+            # 不提供 ROC/PR 曲线数据与指标
+            "metrics": {}
+        }
         return train_metrics, None
 
+    # 有标签测试：正常评估并存入 history（Evaluator.evaluate 默认 store_history=True）
     test_metrics = evaluator.evaluate(category, test_labels, test_scores)
     best_threshold = test_metrics["best_threshold"]
     predicted = (test_scores >= best_threshold).astype(int)
